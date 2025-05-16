@@ -1,25 +1,60 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Bikermaps</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bikermaps</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    </head>
-    <body>
-        <!--[if lt IE 8]>
+
+    <script src='map.js' type='module'></script>
+    <link href="assets/favocon.svg" rel="icon" type="image/svg+xml" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="map.css" rel="stylesheet" />
+    <!-- Mapbox GL JS CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>Bikers</h1>
+    <header>
+        <label for="filter">
+            Filter by time:
+            <input id='#time-slider' name="filter" type="range" value="-1" min=-1 max=1440 />
+        </label>
+        <time id='#selected-time'></time>
+        <em id='#any-time'>(any time)</em>
+    </header>
+    <!--[if lt IE 8]>
             <p class="browserupgrade">
             You are using an <strong>outdated</strong> browser. Please
             <a href="http://browsehappy.com/">upgrade your browser</a> to improve
             your experience.
             </p>
         <![endif]-->
+    <div id="map">
+        <svg></svg>
+    </div>
+    <div class="legend">
+        <label for="legend">Legend</label>
+        <div class='leg-elem' style="--departure-ratio: 1; --color: steelblue;">
+            More departures
+        </div>
+        <div class='leg-elem' style="--departure-ratio: 0.5; --color: color-mix(
+      in oklch,
+      steelblue calc(100% * var(--departure-ratio)),
+      darkorange
+    );">
+            Balanced
+        </div>
+        <div class='leg-elem' style="--departure-ratio: 0; --color: darkorange;">
+            More arrivals
+        </div>
+        <div class="leg-elem">No departures/arrivals</div>
+    </div>
 
+</body>
 
-    </body>
 </html>
